@@ -14,9 +14,9 @@
 
 using STDVecf = std::vector<float>;
 
-namespace MyGL {
+namespace MeowEngine {
 class Camera{
-    GLLearn::Shader* shader = nullptr;
+    MeowEngine::Shader* shader = nullptr;
     GLuint ubo = 0;
 public:
     GLfloat aspect = 1;//w/h

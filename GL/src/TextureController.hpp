@@ -16,7 +16,7 @@
 #include "LRUCache.hpp"
 #include "Bitmap.hpp"
 
-namespace MyGL {
+namespace MeowEngine {
 
 class TextureController{
 

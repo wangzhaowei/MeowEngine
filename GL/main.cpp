@@ -18,22 +18,22 @@
 #include <math.h>
 #include "Triangle.hpp"
 
-class MyApplication: virtual public GLLearn::Application{
+class MyApplication: virtual public MeowEngine::Application{
     
 protected:
     double _time = 0;
-    std::shared_ptr<GLLearn::Model> model;
-    MyGL::Camera camera = MyGL::Camera();
+    std::shared_ptr<MeowEngine::Model> model;
+    MeowEngine::Camera camera = MeowEngine::Camera();
     
-    GLLearn::Shader* ourShader = nullptr; // you can name your shader files however you like
+    MeowEngine::Shader* ourShader = nullptr; // you can name your shader files however you like
     
-    std::vector<GLLearn::Renderable*> objects;
+    std::vector<MeowEngine::Renderable*> objects;
     
     GLuint VBO, VAO;
         
 public:
-    virtual int Init(std::shared_ptr<GLLearn::Render> renderer) override{
-        using namespace GLLearn;
+    virtual int Init(std::shared_ptr<MeowEngine::Render> renderer) override{
+        using namespace MeowEngine;
         int ret = Application::Init(renderer);
         if (ret != 0) {
             return ret;
@@ -105,7 +105,7 @@ private:
 
 int main(int argc, char** argv){
 
-    using namespace GLLearn;
+    using namespace MeowEngine;
     std::shared_ptr<Render> renderer =std::make_shared<Render>();
     MyApplication app;
     if (app.Init(renderer) == 0) {

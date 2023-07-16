@@ -8,7 +8,7 @@
 #include "Application.hpp"
 #include <GLFW/glfw3.h>
 
-namespace GLLearn {
+namespace MeowEngine {
 
 std::map<GLFWwindow*, Application*> Application::windowMap;
 

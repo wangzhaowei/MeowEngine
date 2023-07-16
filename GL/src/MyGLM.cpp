@@ -13,7 +13,7 @@
 #include <vector>
 #include <math.h>
 
-namespace MyGL{
+namespace MeowEngine{
 using namespace std;
 
 template<class T>

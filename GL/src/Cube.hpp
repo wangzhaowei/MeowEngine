@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include "Model.hpp"
 
-namespace GLLearn {
+namespace MeowEngine {
 class Cube:  virtual public Model{
     
 protected:

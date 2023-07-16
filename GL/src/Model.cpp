@@ -10,7 +10,7 @@
 #include "Shaders.hpp"
 #include <iostream>
 
-using namespace GLLearn;
+using namespace MeowEngine;
 
 Model::Model(GLfloat* vertices, GLint numOfVertices, std::vector<int>&& offsets, const GLchar* const vertShaderPath, const GLchar* const fragShaderPath, GLuint stride): _vertices(std::vector<GLfloat>(numOfVertices * 3 * offsets.size(), 0.0f)), shader(vertShaderPath, fragShaderPath){
     

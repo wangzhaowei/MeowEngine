@@ -15,7 +15,7 @@
 #include <glm.hpp>
 #include <gtc/matrix_transform.hpp>
 
-namespace MyGL{
+namespace MeowEngine{
 
 extern GLuint myLookAt(std::vector<float> eye, std::vector<float> center, std::vector<float> up, std::vector<float>& viewMatrix);
 

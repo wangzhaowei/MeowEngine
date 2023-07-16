@@ -13,7 +13,7 @@
 #include <memory>
 #include "Bitmap.hpp"
 
-namespace MyGL {
+namespace MeowEngine {
 class Texture{
 protected:
     const std::shared_ptr<Bitmap> _bitmap;

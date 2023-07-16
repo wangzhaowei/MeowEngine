@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include "Shaders.hpp"
 
-namespace GLLearn {
+namespace MeowEngine {
 class Renderable{
 public:
     virtual void Update(double currentTime);

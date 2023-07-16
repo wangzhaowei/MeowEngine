@@ -8,7 +8,7 @@
 #include "Renderable.hpp"
 
 
-namespace GLLearn {
+namespace MeowEngine {
 void Renderable::Update(double currentTime){
     
 }

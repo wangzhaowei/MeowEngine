@@ -12,7 +12,7 @@
 //#include <OpenGL/gl3.h>
 //#include <OpenGL/gl3ext.h>
 
-namespace GLLearn{
+namespace MeowEngine{
 void Render::Update(double currentTime){
     _currentTime = currentTime;
 }

@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <vector>
 
-namespace MyGL{
+namespace MeowEngine{
 
 class Transformable {
 public:

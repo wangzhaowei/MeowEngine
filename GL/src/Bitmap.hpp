@@ -10,7 +10,7 @@
 
 #include <stdio.h>
 
-namespace MyGL {
+namespace MeowEngine {
 
 class Bitmap{
     friend class Texture;

@@ -11,7 +11,7 @@
 #include "stb_image.h"
 #include <optional>
 
-namespace MyGL {
+namespace MeowEngine {
 
 Bitmap::~Bitmap(){
     stbi_image_free(buffer);

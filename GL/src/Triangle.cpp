@@ -12,7 +12,7 @@
 //
 //}"3.3.shader.vs", "3.3.shader.fs"
 
-namespace GLLearn {
+namespace MeowEngine {
 
 Triangle::Triangle() noexcept: VAO(-1), VBO(-1), shader("/Volumes/D50 SSD/Projects/GL/GL/Shaders/ShaderSources/VertexShader.vs", "/Volumes/D50 SSD/Projects/GL/GL/Shaders/ShaderSources/FragmentShader.fs"){
     
@@ -61,7 +61,7 @@ Triangle::Triangle() noexcept: VAO(-1), VBO(-1), shader("/Volumes/D50 SSD/Projec
         glGenerateMipmap(GL_TEXTURE_2D);
     };
     
-    auto ret = MyGL::TextureController::shared()->loadImage("/Volumes/D50 SSD/Projects/GL/GL/wall.jpeg");
+    auto ret = MeowEngine::TextureController::shared()->loadImage("/Volumes/D50 SSD/Projects/GL/GL/wall.jpeg");
     
     if(ret.has_value()){
         auto wallTex = ret.value();

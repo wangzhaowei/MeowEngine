@@ -12,14 +12,14 @@
 #include "Renderable.hpp"
 #include "Shaders.hpp"
 
-namespace GLLearn {
+namespace MeowEngine {
 class Triangle: public virtual Renderable{
 protected:
     
     GLuint VAO;
     GLuint VBO;
     GLuint textures[2];
-    GLLearn::Shader shader;
+    MeowEngine::Shader shader;
     
 public:
     Triangle() noexcept;

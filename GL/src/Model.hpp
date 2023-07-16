@@ -14,7 +14,7 @@
 #include "Renderable.hpp"
 #include "Transformable.hpp"
 
-namespace GLLearn {
+namespace MeowEngine {
 
 class Model: public virtual Renderable{
 protected:
@@ -24,7 +24,7 @@ protected:
     GLuint VAO;
     Shader shader;
 public:
-    MyGL::Transformable transform;
+    MeowEngine::Transformable transform;
     
     Model(GLfloat* vertices, GLint numOfVertices, std::vector<int>&& offsets, const GLchar* const vertShaderPath, const GLchar* const fragShaderPath, GLuint stride = 6);
     virtual ~Model(){};

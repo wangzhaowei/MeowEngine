@@ -71,7 +71,7 @@ static const GLchar* modelFragSrc[] =
 
 extern std::ostream& operator<< (std::ostream& out, const std::vector<char> v);
 
-namespace GLLearn {
+namespace MeowEngine {
 class Shader{
 public:
     GLuint program;

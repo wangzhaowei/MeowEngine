@@ -8,7 +8,7 @@
 #include "Cube.hpp"
 #include <vector>
 
-namespace GLLearn {
+namespace MeowEngine {
 std::vector<float> cube{
     //  front
     -1, -1, 1,

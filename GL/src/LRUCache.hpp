@@ -12,7 +12,7 @@
 #include <list>
 #include <unordered_map>
 
-namespace MyGL{
+namespace MeowEngine{
 
 template<class Key, class Value, size_t Capacity, class DeallocationFuncTy = std::function<void(Value&)>>
 class LRUCache{

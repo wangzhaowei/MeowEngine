@@ -10,7 +10,7 @@
 #include <math.h>
 #include "ShaderSrc.hpp"
 
-namespace MyGL {
+namespace MeowEngine {
 
 void Camera::update(){
     const std::vector<float>& viewMatrix = lookAt({0, 0, 11}, {0, 1, 0});
@@ -34,7 +34,7 @@ void Camera::update(){
 
 void Camera::init(){
     
-    shader = new GLLearn::Shader(modelVertSrc, modelFragSrc);
+    shader = new MeowEngine::Shader(modelVertSrc, modelFragSrc);
     glGenBuffers(1, &ubo);
     const GLuint matBindingPt = 0;
     GLuint matInd = glGetUniformBlockIndex(shader->getProgram(), "Matrices");

@@ -10,7 +10,7 @@
 
 #include <stdio.h>
 
-namespace GLLearn {
+namespace MeowEngine {
 class Renderable;
 class Render{
 private:

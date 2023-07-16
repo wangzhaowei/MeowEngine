@@ -13,7 +13,7 @@
 #include <map>
 
 class GLFWwindow;
-namespace GLLearn {
+namespace MeowEngine {
 class Renderable;
 class Render;
 class Application{

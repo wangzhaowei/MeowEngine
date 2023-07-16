@@ -1,0 +1,3 @@
+set_default_toolchain("//build/toolchains:clang_arm64")
+
+cflags_cc = [ "-std=c++17" ]

@@ -22,6 +22,7 @@ public:
     GLfloat aspect = 1;//w/h
     Transformable transform;
     virtual void update();
+    virtual void lookAt(STDVecf& center, STDVecf& up) noexcept;
     virtual STDVecf lookAt(STDVecf center, STDVecf up) const noexcept;
     virtual STDVecf perspective(float fov, float aspect, float near, float far) const noexcept;
     

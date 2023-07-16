@@ -43,12 +43,21 @@ void Camera::init(){
     glBindBufferBase(GL_UNIFORM_BUFFER, matBindingPt, ubo);
 }
 
+void Camera::lookAt(STDVecf &center, STDVecf &up) noexcept{
+    transform.setTranslation(center);
+    
+}
+
 STDVecf Camera::lookAt(STDVecf center, STDVecf up) const noexcept{
     STDVecf eye{transform.translation};
     STDVecf viewMat;
 //    glm::mat4 view = glm::lookAt(vec3_2_glmvec3(eye), vec3_2_glmvec3(center), vec3_2_glmvec3(up));
     glm::mat4 view = glm::lookAtLH(vec3_2_glmvec3(eye), vec3_2_glmvec3(center), vec3_2_glmvec3(up));
 //    myLookAt(eye, center, up, viewMat);
+    
+//    transform.translation = center;
+    
+    
     STDVecf per2 = STDVecf{
         view[0][0], view[0][1], view[0][2], view[0][3],
         view[1][0], view[1][1], view[1][2], view[1][3],

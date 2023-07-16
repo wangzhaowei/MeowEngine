@@ -20,6 +20,11 @@ public:
     std::vector<float> rotation;
     
 public:
+    
+    void setTranslation(std::vector<float> trans){
+        translation = trans;
+    }
+    
     virtual ~Transformable(){
         
     }

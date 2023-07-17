@@ -21,6 +21,7 @@ class Model;
 class Mesh{
     friend class Model;
 protected:
+    std::shared_ptr<std::vector<float>> _vertexBuffer;
     std::vector<Submesh> _submeshes;
     
 public:
@@ -28,14 +29,13 @@ public:
         return _submeshes;
     }
     
-    Mesh(std::vector<Submesh>& submeshes): _submeshes(submeshes){};
+    Mesh(std::vector<Submesh>& submeshes): _vertexBuffer({}) ,_submeshes(submeshes){};
     virtual ~Mesh(){};
 };
 
 class Submesh{
     friend class Mesh;
 protected:
-    std::shared_ptr<std::vector<float>> _buffer;
     
     std::optional<Texture> _texture;
     
@@ -46,7 +46,7 @@ protected:
     int _stride;
     
 public:
-    Submesh(std::shared_ptr<std::vector<float>> buffer, std::vector<int>& offsets, int stride): _buffer(buffer), _texture(std::nullopt), _indexBuffer(std::nullopt), _offsets(offsets), _stride(stride){};
+    Submesh(std::vector<int>& offsets, int stride): _texture(std::nullopt), _indexBuffer(std::nullopt), _offsets(offsets), _stride(stride){};
     virtual ~Submesh(){};
 };
 

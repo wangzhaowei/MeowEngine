@@ -1,0 +1,6 @@
+shared_library("GamePlay") {
+  sources = [
+    "GameObject.hpp",
+    "GameObject.cpp",
+  ]
+}

@@ -2,7 +2,7 @@
 //  MyGLM.cpp
 //  GL
 //
-//  Created by 王昭威 on 2023/6/29.
+//  Created by Felis Meow on 2023/6/29.
 //
 
 #include "MyGLM.hpp"

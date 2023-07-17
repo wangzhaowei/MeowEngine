@@ -2,17 +2,26 @@
 //  Model.cpp
 //  GL
 //
-//  Created by 王昭威 on 2023/6/25.
+//  Created by Felis Meow on 2023/6/25.
 //
 
 #include "Model.hpp"
 #include <GLFW/glfw3.h>
 #include "Shaders.hpp"
 #include <iostream>
+#include "Mesh.hpp"
+#include <gtc/type_ptr.hpp>
 
 using namespace MeowEngine;
 
-Model::Model(GLfloat* vertices, GLint numOfVertices, std::vector<int>&& offsets, const GLchar* const vertShaderPath, const GLchar* const fragShaderPath, GLuint stride): _vertices(std::vector<GLfloat>(numOfVertices * 3 * offsets.size(), 0.0f)), shader(vertShaderPath, fragShaderPath){
+Model::Model(
+             GLfloat* vertices,
+             GLint numOfVertices,
+             std::vector<int>&& offsets,
+             const GLchar* const vertShaderPath,
+             const GLchar* const fragShaderPath,
+             GLuint stride
+             ): _vertices(std::vector<GLfloat>(numOfVertices * 3 * offsets.size(), 0.0f)), shader(vertShaderPath, fragShaderPath), mesh(std::nullopt){
     
     if(vertices != nullptr){
         const GLuint len = numOfVertices * 3 * offsets.size();
@@ -54,16 +63,16 @@ void Model::Update(double currentTime){
 }
 
 void Model::render(){
-    const GLfloat modelMat[] = {
-        3, 0, 0, 0,
-        0, 3, 0, 0,
-        0, 0, 3, 11,
-        0, 0, 0, 1,
-    };
+    transform.translation[2] = 11;
+    transform.rotation[0] = 45;
+    transform.scale = {3, 3, 3};
+    const glm::mat4x4 mat = transform.matrix();
+    const float *pSource = (const float*)glm::value_ptr(mat);
+
     shader.use();
     glBindVertexArray(VAO);
     
-    shader.setUniformMatrix4fv("model", modelMat);
+    shader.setUniformMatrix4fv("model", pSource);
 
     glDrawArrays(GL_TRIANGLES, 0, _vertices.size() / 3);
 }

@@ -2,7 +2,7 @@
 //  Camera.cpp
 //  GL
 //
-//  Created by 王昭威 on 2023/6/30.
+//  Created by Felis Meow on 2023/6/30.
 //
 
 #include "Camera.hpp"
@@ -43,12 +43,11 @@ void Camera::init(){
     glBindBufferBase(GL_UNIFORM_BUFFER, matBindingPt, ubo);
 }
 
-void Camera::lookAt(STDVecf &center, STDVecf &up) noexcept{
-    transform.setTranslation(center);
-    
+STDVecf Camera::lookAt(STDVecf &&center, STDVecf &&up) noexcept{
+    return Camera::lookAt(center, up);
 }
 
-STDVecf Camera::lookAt(STDVecf center, STDVecf up) const noexcept{
+STDVecf Camera::lookAt(STDVecf& center, STDVecf& up) noexcept{
     STDVecf eye{transform.translation};
     STDVecf viewMat;
 //    glm::mat4 view = glm::lookAt(vec3_2_glmvec3(eye), vec3_2_glmvec3(center), vec3_2_glmvec3(up));
@@ -56,7 +55,6 @@ STDVecf Camera::lookAt(STDVecf center, STDVecf up) const noexcept{
 //    myLookAt(eye, center, up, viewMat);
     
 //    transform.translation = center;
-    
     
     STDVecf per2 = STDVecf{
         view[0][0], view[0][1], view[0][2], view[0][3],

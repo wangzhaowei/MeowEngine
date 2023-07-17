@@ -2,7 +2,7 @@
 //  Application.hpp
 //  GL
 //
-//  Created by 王昭威 on 2023/6/22.
+//  Created by Felis Meow on 2023/6/22.
 //
 
 #ifndef Application_hpp

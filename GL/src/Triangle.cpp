@@ -2,7 +2,7 @@
 //  Triangle.cpp
 //  GL
 //
-//  Created by 王昭威 on 2023/7/13.
+//  Created by Felis Meow on 2023/7/13.
 //
 
 #include "Triangle.hpp"

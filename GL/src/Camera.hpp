@@ -2,7 +2,7 @@
 //  Camera.hpp
 //  GL
 //
-//  Created by 王昭威 on 2023/6/30.
+//  Created by Felis Meow on 2023/6/30.
 //
 
 #ifndef Camera_hpp
@@ -22,8 +22,9 @@ public:
     GLfloat aspect = 1;//w/h
     Transformable transform;
     virtual void update();
-    virtual void lookAt(STDVecf& center, STDVecf& up) noexcept;
-    virtual STDVecf lookAt(STDVecf center, STDVecf up) const noexcept;
+    
+    virtual STDVecf lookAt(STDVecf& center, STDVecf& up) noexcept;
+    virtual STDVecf lookAt(STDVecf&& center, STDVecf&& up) noexcept;
     virtual STDVecf perspective(float fov, float aspect, float near, float far) const noexcept;
     
     void init();

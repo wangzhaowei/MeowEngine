@@ -2,7 +2,7 @@
 //  Cube.cpp
 //  GL
 //
-//  Created by 王昭威 on 2023/7/3.
+//  Created by Felis Meow on 2023/7/3.
 //
 
 #include "Cube.hpp"
@@ -132,7 +132,7 @@ std::vector<float> cube{
     1, 1, 1,
     1, 0, 0,
 };
-Cube::Cube(): Model(cube.data(), cube.size() / 6, std::vector<int>{0, 3}, "/Volumes/D50 SSD/Projects/GL/GL/Shaders/ShaderSources/ModelVert", "/Volumes/D50 SSD/Projects/GL/GL/Shaders/ShaderSources/ModelFrag", 6){
+Cube::Cube(): Model(cube.data(), cube.size() / 6, std::vector<int>{0, 3}, "/Volumes/D50 SSD/Projects/GL/GL/Shaders/ShaderSources/ModelVert.vs", "/Volumes/D50 SSD/Projects/GL/GL/Shaders/ShaderSources/ModelFrag.fs", 6){
     
     glGenTextures(1, &texture);
     glBindTexture(GL_TEXTURE_2D, texture);

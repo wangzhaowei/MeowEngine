@@ -2,7 +2,7 @@
 //  Cube.hpp
 //  GL
 //
-//  Created by 王昭威 on 2023/7/3.
+//  Created by Felis Meow on 2023/7/3.
 //
 
 #ifndef Cube_hpp

@@ -3,9 +3,13 @@ shared_library("engine") {
     "//GL/src",
     "//GL/Vendor",
     "/opt/homebrew/Cellar/glfw/3.3.8/include/",
-    "/opt/homebrew/Cellar/glm/0.9.9.8/include/glm"
+    "/opt/homebrew/Cellar/glm/0.9.9.8/include/glm",
+    "/opt/homebrew/include",
+    "/opt/homebrew/include/glm",
   ]
   sources = [
+    "Mesh.hpp",
+    "Mesh.cpp",
     "LRUCache.hpp",
     "LRUCache.cpp",
     "Shaders.hpp",

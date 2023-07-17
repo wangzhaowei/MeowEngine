@@ -2,7 +2,7 @@
 //  Application.cpp
 //  GL
 //
-//  Created by 王昭威 on 2023/6/22.
+//  Created by Felis Meow on 2023/6/22.
 //
 
 #include "Application.hpp"

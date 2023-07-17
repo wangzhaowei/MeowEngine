@@ -2,7 +2,7 @@
 //  Model.hpp
 //  GL
 //
-//  Created by 王昭威 on 2023/6/25.
+//  Created by Felis Meow on 2023/6/25.
 //
 
 #ifndef Model_hpp
@@ -13,6 +13,9 @@
 #include <OpenGL/OpenGL.h>
 #include "Renderable.hpp"
 #include "Transformable.hpp"
+#include "Texture.hpp"
+#include <optional>
+#include "Mesh.hpp"
 
 namespace MeowEngine {
 
@@ -23,6 +26,9 @@ protected:
 
     GLuint VAO;
     Shader shader;
+    
+    std::optional<Mesh> mesh;
+    
 public:
     MeowEngine::Transformable transform;
     

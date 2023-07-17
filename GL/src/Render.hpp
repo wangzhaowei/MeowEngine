@@ -2,7 +2,7 @@
 //  Render.hpp
 //  GL
 //
-//  Created by 王昭威 on 2023/6/25.
+//  Created by Felis Meow on 2023/6/25.
 //
 
 #ifndef Render_hpp

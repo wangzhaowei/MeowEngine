@@ -14,13 +14,6 @@
 
 namespace MeowEngine {
 
-float vertices[] = {
-    // positions         // colors              //  UV
-     0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,  1, 0,   // bottom right
-    -0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,  0, 0,   // bottom left
-     0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f,   0.5, 1,    // top
-};
-
 std::vector<float> Triangle::triVert{
     // positions         // colors              //  UV
      0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,  1, 0,   // bottom right
@@ -43,7 +36,6 @@ texture(MeowEngine::TextureController::shared()->loadImage("/Volumes/D50 SSD/Pro
         shader.use();
         
         glUniform1i(glGetUniformLocation(shader.program, "diffuse"), 0);
-//        glUniform1i(glGetUniformLocation(shader.program, "diffuse2"), 1);
     }
 }
 

@@ -43,7 +43,7 @@ std::optional<Texture> TextureController::loadImage(const std::string &path){
         if (rgbImage == nullptr) {
             return {};
         }
-        bitmap = std::make_shared<Bitmap>(rgbImage, width, height, bpp);
+        bitmap = std::make_shared<Bitmap>(rgbImage, width, height, bpp, path);
         bufferCaches.put(path, bitmap);
     }
     

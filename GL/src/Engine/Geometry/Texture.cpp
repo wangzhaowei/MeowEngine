@@ -31,7 +31,7 @@ Texture::Texture(std::shared_ptr<Bitmap>& bitmapPtr): _bitmap(bitmapPtr){
     
     if (_bitmap != nullptr) {
         GLuint id = 0;
-        makeTexture(id, GL_TEXTURE0, _bitmap->buffer);
+        makeTexture(id, GL_TEXTURE0, _bitmap->buffer, _bitmap->_width, _bitmap->_width);
         _textureID = id;
     }
 }

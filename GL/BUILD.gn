@@ -1,5 +1,6 @@
 executable("test"){
     include_dirs = [
+    "//GL/src/Engine",
     "//GL/src",
     "//GL/Vendor",
     "/opt/homebrew/Cellar/glfw/3.3.8/include/",
@@ -10,7 +11,7 @@ executable("test"){
     ]
 
     deps = [
-        "//GL/src:engine",
+        "//GL/src/Engine:engine",
     ]
     
     frameworks = [

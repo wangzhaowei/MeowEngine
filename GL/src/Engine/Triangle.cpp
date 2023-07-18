@@ -62,7 +62,6 @@ Triangle::Triangle() noexcept: VAO(-1), VBO(-1), shader("/Volumes/D50 SSD/Projec
         
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, pixel);
         glGenerateMipmap(GL_TEXTURE_2D);
-        
     };
     
     auto ret = MeowEngine::TextureController::shared()->loadImage("/Volumes/D50 SSD/Projects/GL/GL/wall.jpeg");

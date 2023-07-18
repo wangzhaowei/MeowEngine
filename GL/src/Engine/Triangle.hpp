@@ -9,16 +9,23 @@
 #define Triangle_hpp
 
 #include <stdio.h>
+#include <optional>
 #include "Renderable.hpp"
 #include "Shaders.hpp"
+#include "Mesh.hpp"
+#include "Texture.hpp"
 
 namespace MeowEngine {
 class Triangle: public virtual Renderable{
+    
+private:
+    static std::vector<float> triVert;
+    static std::vector<int> offsets;
+    Mesh mesh;
+    std::optional<Texture> texture;
+    
 protected:
     
-    GLuint VAO;
-    GLuint VBO;
-    GLuint textures[2];
     MeowEngine::Shader shader;
     
 public:

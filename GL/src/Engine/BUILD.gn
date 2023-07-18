@@ -1,16 +1,24 @@
+shared_library("Utilities") {
+  sources = [
+    "LRUCaches.hpp",
+    # "LRUCaches.cpp",
+  ]
+}
+
 shared_library("engine") {
   include_dirs = [
     "//GL/Vendor",
+    "./Geometry",
     "/opt/homebrew/Cellar/glfw/3.3.8/include/",
     "/opt/homebrew/Cellar/glm/0.9.9.8/include/glm",
     "/opt/homebrew/include",
     "/opt/homebrew/include/glm",
   ]
   sources = [
-    "Mesh.hpp",
-    "Mesh.cpp",
-    "LRUCache.hpp",
-    "LRUCache.cpp",
+    # "Mesh.hpp",
+    # "Mesh.cpp",
+    # "LRUCache.hpp",
+    # "LRUCache.cpp",
     "Shaders.hpp",
     "Shaders.cpp",
     "Render.hpp",
@@ -25,9 +33,6 @@ shared_library("engine") {
     "Triangle.cpp",
     "Transformable.hpp",
     "Transformable.cpp",
-    "Bitmap.hpp",
-    "Texture.hpp",
-    "Texture.cpp",
     "TextureController.hpp",
     "TextureController.cpp",
     "ShaderSrc.hpp",
@@ -51,6 +56,7 @@ shared_library("engine") {
 
   deps = [
     "//GL/Vendor:vendor",
+    "./Geometry:Geometry"
   ]
 
   libs = [ "//GL/Vendor/lib/libglfw3.a" ]

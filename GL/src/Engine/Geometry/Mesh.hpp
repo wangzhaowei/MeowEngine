@@ -12,6 +12,7 @@
 #include <vector>
 #include "Texture.hpp"
 #include <optional>
+#include "MeshLoader.hpp"
 
 namespace MeowEngine {
 
@@ -20,17 +21,33 @@ class Model;
 
 class Mesh{
     friend class Model;
+    friend class MeshLoader;
 protected:
+    GLuint VAO;
+    GLuint VBO;
+    
     std::shared_ptr<std::vector<float>> _vertexBuffer;
     std::vector<Submesh> _submeshes;
     
 public:
+    GLuint getVAO(){
+        return VAO;
+    }
+    
     std::vector<Submesh>& getSubmeshes(){
         return _submeshes;
     }
     
-    Mesh(std::vector<Submesh>& submeshes): _vertexBuffer({}) ,_submeshes(submeshes){};
-    virtual ~Mesh(){};
+    Mesh(std::vector<float>& vertices, std::vector<Submesh>& submeshes): _vertexBuffer(std::make_shared<std::vector<float>>(vertices)), _submeshes(submeshes){};
+    
+    Mesh(std::vector<float>& vertices, int stride, std::vector<int>& offsets);
+    
+    Mesh(Mesh&& other);
+    
+    virtual ~Mesh(){
+        glDeleteBuffers(1, &VBO);
+        glDeleteVertexArrays(1, &VAO);
+    };
 };
 
 class Submesh{

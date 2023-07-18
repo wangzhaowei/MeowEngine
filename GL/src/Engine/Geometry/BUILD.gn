@@ -1,0 +1,29 @@
+shared_library("Geometry") {
+
+    include_dirs = [
+        "//GL/src/Engine",
+        "../"
+    ]
+    sources = [
+        "Mesh.hpp",
+        "Mesh.cpp",
+        "MeshLoader.hpp",
+        "MeshLoader.cpp",
+        "Texture.hpp",
+        "Texture.cpp",
+        "Bitmap.hpp",
+    ]
+
+    frameworks = [
+        "Cocoa.framework",
+        "CoreFoundation.framework",
+        "CoreGraphics.framework",
+        "CoreVideo.framework",
+        "IOKit.framework",
+        "OpenGL.framework",
+    ]
+
+    deps = [
+        "//GL/src/Engine:Utilities"
+    ]
+}

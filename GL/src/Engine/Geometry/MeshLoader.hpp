@@ -20,9 +20,11 @@ namespace MeowEngine {
 class Mesh;
 class MeshLoader{
 protected:
-    static LRUCache<std::string, typename std::shared_ptr<std::vector<float>>, 50> caches;
+    static LRUCache<std::string, typename std::shared_ptr<Mesh>, 50> caches;
 public:
-    static std::shared_ptr<Mesh> makeMesh(float* verticesBuffer, int numOfVertices, int stride);
+    static std::shared_ptr<Mesh> makeMesh(float* verticesBuffer, int numOfVertices, int stride, std::vector<int>& offsets, std::string key);
+    
+    static std::shared_ptr<Mesh> makeMesh(std::vector<float>& verticesBuffer, int stride, std::vector<int>& offsets, std::string& key);
 };
 }
 

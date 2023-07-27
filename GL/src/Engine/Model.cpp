@@ -21,7 +21,7 @@ Model::Model(
              const GLchar* const vertShaderPath,
              const GLchar* const fragShaderPath,
              GLuint stride
-             ): _vertices(std::vector<GLfloat>(numOfVertices * 3 * offsets.size(), 0.0f)), shader(vertShaderPath, fragShaderPath), mesh(std::nullopt){
+             ): _vertices(std::vector<GLfloat>(numOfVertices * 3 * offsets.size(), 0.0f)), _shader(std::make_shared<Shader>(vertShaderPath, fragShaderPath)), _mesh(std::nullopt){
     
     if(vertices != nullptr){
         const GLuint len = numOfVertices * 3 * offsets.size();
@@ -46,15 +46,20 @@ Model::Model(
             glEnableVertexAttribArray(vertAttribeteIndex[i]);
         }
         
-        const GLuint program = shader.getProgram();
-        shader.use();
+        const GLuint program = _shader->getProgram();
+        _shader->use();
         const GLuint matBindingPt = 0;
         GLuint matInd = glGetUniformBlockIndex(program, "Matrices");
         glUniformBlockBinding(program, matInd, matBindingPt);
     }
 }
 
-Model::Model(Model&& obj): _vertices(obj._vertices), shader("", ""){
+Model::Model(std::shared_ptr<Mesh> mesh, const Shader& shader): _mesh({mesh}), _shader(std::make_shared<Shader>(shader)){
+    
+    
+}
+
+Model::Model(Model&& obj): _vertices(obj._vertices), _shader(nullptr){
     
 }
 
@@ -69,10 +74,10 @@ void Model::render(){
     const glm::mat4x4 mat = transform.matrix();
     const float *pSource = (const float*)glm::value_ptr(mat);
 
-    shader.use();
+    _shader->use();
     glBindVertexArray(VAO);
     
-    shader.setUniformMatrix4fv("model", pSource);
+    _shader->setUniformMatrix4fv("model", pSource);
 
     glDrawArrays(GL_TRIANGLES, 0, _vertices.size() / 3);
 }

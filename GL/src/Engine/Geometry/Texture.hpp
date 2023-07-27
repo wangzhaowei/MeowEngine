@@ -50,7 +50,8 @@ public:
     Texture(std::shared_ptr<Bitmap>& bitmapPtr);
     
     virtual ~Texture(){
-        
+        if(_textureID.has_value())
+            glDeleteTextures(1, &_textureID.value());
     }
 };
 }

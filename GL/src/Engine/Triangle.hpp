@@ -21,7 +21,9 @@ class Triangle: public virtual Renderable{
 private:
     static std::vector<float> triVert;
     static std::vector<int> offsets;
-    Mesh mesh;
+    static std::string meshKey;
+    
+    std::shared_ptr<Mesh> mesh;
     std::optional<Texture> texture;
     
 protected:

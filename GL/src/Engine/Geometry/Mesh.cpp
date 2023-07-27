@@ -37,5 +37,4 @@ Mesh::Mesh(std::vector<float>& vertices, int stride, std::vector<int>& offsets):
 Mesh::Mesh(Mesh&& other){
     
 }
-
 }

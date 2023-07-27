@@ -36,10 +36,10 @@ int Application::Init(std::shared_ptr<Render> renderer){
     
     this->renderer = renderer;
     
-    glfwWindowHint (GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint (GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint (GLFW_CONTEXT_VERSION_MAJOR, 4);
+    glfwWindowHint (GLFW_CONTEXT_VERSION_MINOR, 1);
     glfwWindowHint (GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    
+     
 #ifdef __APPLE__
     /* We need to explicitly ask for a 3.2 context on OS X */
     

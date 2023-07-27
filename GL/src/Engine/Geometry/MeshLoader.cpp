@@ -12,15 +12,28 @@
 
 namespace MeowEngine {
 
-LRUCache<std::string, typename std::shared_ptr<std::vector<float>>, 50> MeshLoader::caches;
+LRUCache<std::string, typename std::shared_ptr<Mesh>, 50> MeshLoader::caches;
 
-std::shared_ptr<Mesh> MeshLoader::makeMesh(float *verticesBuffer, int numOfVertices, int stride){
+std::shared_ptr<Mesh> MeshLoader::makeMesh(float *verticesBuffer, int numOfVertices, int stride, std::vector<int>& offsets, std::string key){
     
-//    auto verPtr = new std::vector<float>();
-//    verPtr->assign(verticesBuffer, verticesBuffer + numOfVertices * stride);
-//    auto ptr = std::make_shared<Mesh>(verPtr, stride);
-    
-    return nullptr;
+    auto buffer = caches.get(key);
+    if (buffer.has_value()) {
+        return buffer.value();
+    }
+
+    std::vector<float> vertVec(verticesBuffer, verticesBuffer + numOfVertices * stride);
+    return makeMesh(vertVec, stride, offsets, key);
+}
+
+std::shared_ptr<Mesh> MeshLoader::makeMesh(std::vector<float>& verticesBuffer, int stride, std::vector<int>& offsets, std::string& key){
+    auto buffer = caches.get(key);
+    if (!buffer.has_value()) {
+        auto meshPtr = std::make_shared<Mesh>(verticesBuffer, stride, offsets);
+        caches.put(key, meshPtr);
+        buffer = caches.get(key);
+    }
+
+    return buffer.value_or(nullptr);
 }
 
 }

@@ -7,6 +7,8 @@
 
 #include "Triangle.hpp"
 #include "TextureController.hpp"
+#include "MeshLoader.hpp"
+#include "VerticesData.hpp"
 
 //std::string getPath(){
 //
@@ -14,28 +16,15 @@
 
 namespace MeowEngine {
 
-std::vector<float> Triangle::triVert{
-    // positions         // colors              //  UV
-     0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,  1, 0,   // bottom right
-    -0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,  0, 0,   // bottom left
-     0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f,   0.5, 1,    // top
-};
-
-std::vector<int> Triangle::offsets{
-    0,
-    3 * sizeof(float),
-    6 * sizeof(float),
-};
-
 Triangle::Triangle() noexcept:
 shader("/Volumes/D50 SSD/Projects/GL/GL/Shaders/ShaderSources/VertexShader.vs", "/Volumes/D50 SSD/Projects/GL/GL/Shaders/ShaderSources/FragmentShader.fs"),
-mesh(Triangle::triVert, 8 * sizeof(float), Triangle::offsets),
+mesh(MeshLoader::makeMesh(VerticesData::_triangle.triVert, VerticesData::_triangle.stride, VerticesData::_triangle.offsets, VerticesData::_triangle.meshKey)),
 texture(MeowEngine::TextureController::shared()->loadImage("/Volumes/D50 SSD/Projects/GL/GL/wall.jpeg")){
     
     if (texture.has_value()) {
         shader.use();
         
-        glUniform1i(glGetUniformLocation(shader.program, "diffuse"), 0);
+        shader.setUniform1i("diffuse", 0);
     }
 }
 
@@ -45,11 +34,21 @@ Triangle::~Triangle(){
 
 void Triangle::render(){
 
+    if (mesh == nullptr) {
+        return;
+    }
     texture.value().setTexture(GL_TEXTURE0, GL_TEXTURE_2D);
     
     shader.use();
+        
+    GLuint func = glGetSubroutineIndex(shader.program, GL_VERTEX_SHADER, "diffuseLight2");
+    GLuint subroutineLoc = glGetSubroutineUniformLocation(shader.program, GL_VERTEX_SHADER, "lightFunc2");
+    if (func != GL_INVALID_INDEX && subroutineLoc != GL_INVALID_INDEX) {
+        
+        glUniformSubroutinesuiv(GL_VERTEX_SHADER, 1, &func);
+    }
     
-    glBindVertexArray(mesh.getVAO());
+    glBindVertexArray(mesh->getVAO());
     glDrawArrays(GL_TRIANGLES, 0, 3);
 }
 }

@@ -73,6 +73,8 @@ extern std::ostream& operator<< (std::ostream& out, const std::vector<char> v);
 
 namespace MeowEngine {
 class Shader{
+private:
+    
 public:
     GLuint program;
     const char** const vert;
@@ -80,6 +82,10 @@ public:
     
     GLuint getProgram(){
         return program;
+    }
+    
+    void setUniform1i(const char* name, GLuint v0){
+        glUniform1i(glGetUniformLocation(program, name), v0);
     }
     
     void setUniformMatrix4fv(const std::string& name, const GLfloat modelMat[]){
@@ -90,6 +96,8 @@ public:
     GLuint getUniformLocation(const GLchar* name){
         return glGetUniformLocation(program, name);
     }
+    
+    Shader(const Shader& other): program(other.program), vert(other.vert), frag(other.frag){}
     
     Shader(const char** const vertPtr, const char** const fragPtr): program(0), vert(vertPtr), frag(fragPtr){
         
@@ -171,6 +179,10 @@ public:
         // delete the shaders as they're linked into our program now and no longer necessary
         glDeleteShader(vertex);
         glDeleteShader(fragment);
+    }
+    
+    virtual ~Shader(){
+        glDeleteProgram(program);
     }
     
     void use(){

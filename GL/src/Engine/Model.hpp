@@ -25,16 +25,20 @@ protected:
     GLuint verticesBuffer;
 
     GLuint VAO;
-    Shader shader;
+    std::shared_ptr<Shader> _shader;
     
-    std::optional<Mesh> mesh;
+    std::optional<std::shared_ptr<Mesh>> _mesh;
     
 public:
     MeowEngine::Transformable transform;
     
     Model(GLfloat* vertices, GLint numOfVertices, std::vector<int>&& offsets, const GLchar* const vertShaderPath, const GLchar* const fragShaderPath, GLuint stride = 6);
-    virtual ~Model(){};
+    
+    Model(std::shared_ptr<Mesh> mesh, const Shader& shader);
+    
     Model(Model&& obj);
+    
+    virtual ~Model(){};
     
     virtual void Update(double currentTime) override;
     virtual void render() override;

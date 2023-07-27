@@ -18,7 +18,7 @@ template<class Key, class Value, size_t Capacity, class DeallocationFuncTy = std
 class LRUCache{
 
 private:
-//    DeallocationFuncTy _deconstruction;
+    DeallocationFuncTy deallocator;
     
 public:
     static_assert(Capacity > 0, "Capacity must be larger than 0");
@@ -49,7 +49,7 @@ bool LRUCache<Key, Value, Capacity, DeallocationFuncTy>::put(const Key& key, con
     }
 
     if(bufferMap.size() >= Capacity){
-        DeallocationFuncTy deallocator;
+        
         deallocator(bufferList.back().second);
         bufferMap.erase(bufferList.back().first);
         bufferList.pop_back();

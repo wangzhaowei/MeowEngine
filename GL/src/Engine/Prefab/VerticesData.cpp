@@ -11,7 +11,7 @@
 
 namespace MeowEngine {
 
-VerticesData::Triangle VerticesData::_triangle = {
+VerticesData::Triangle VerticesData::_triangle{
     .triVert = {
         // positions         // colors              //  UV
          0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,  1, 0,   // bottom right

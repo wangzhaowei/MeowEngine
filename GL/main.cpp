@@ -32,9 +32,10 @@ protected:
     GLuint VBO, VAO;
         
 public:
-    virtual int Init(std::shared_ptr<MeowEngine::Render> renderer) override{
+    virtual int initWindow(std::shared_ptr<MeowEngine::Render> renderer) override{
         using namespace MeowEngine;
-        int ret = Application::Init(renderer);
+        int ret = Application::initWindow(renderer);
+        
         if (ret != 0) {
             return ret;
         }
@@ -54,7 +55,7 @@ public:
                 
         camera.transform.translation = {0, 0.0, -2};
         setUpMVP(1, 1);
-                
+        
         return 0;
     }
     

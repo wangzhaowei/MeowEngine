@@ -29,6 +29,8 @@ Model::Model(
             _vertices[i] = vertices[i];
         }
         
+//        std::vector<std::vector<int>> vec(std::vector<int>, 10);
+        
         glGenVertexArrays(1, &VAO);
         glBindVertexArray(VAO);
         
@@ -73,7 +75,6 @@ void Model::render(){
     transform.scale = {3, 3, 3};
     const glm::mat4x4 mat = transform.matrix();
     const float *pSource = (const float*)glm::value_ptr(mat);
-
     _shader->use();
     glBindVertexArray(VAO);
     

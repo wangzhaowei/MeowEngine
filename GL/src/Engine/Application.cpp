@@ -6,7 +6,9 @@
 //
 
 #include "Application.hpp"
+#include <unistd.h>
 #include <GLFW/glfw3.h>
+#include <thread>
 
 namespace MeowEngine {
 
@@ -27,7 +29,29 @@ void Application::Update(double currentTime){
     
 }
 
-int Application::Init(std::shared_ptr<Render> renderer){
+void Application::renderLoop(){
+    
+}
+
+void Application::logicLoop(){
+    
+}
+
+void* renderThreadCallBack(void* args){
+    Application* app = static_cast<Application*>(args);
+    app->renderLoop();
+    
+    return nullptr;
+}
+
+void* logicThreadCallBack(void* args){
+    Application* app = static_cast<Application*>(args);
+    app->logicLoop();
+    
+    return nullptr;
+}
+
+int Application::initWindow(std::shared_ptr<Render> renderer){
     /* Initialize the library */
     if ( !glfwInit() )
     {
@@ -62,6 +86,24 @@ int Application::Init(std::shared_ptr<Render> renderer){
     return 0;
 }
 
+int Application::Init(std::shared_ptr<Render> renderer){
+    
+    if (initWindow(renderer) != 0) {
+        return -2;
+    }
+    
+//    renderThread = new std::thread([this, &renderer](){
+//            
+//        this->renderLoop();
+//    });
+//    logicThread = new std::thread([this](){
+//        
+//        this->logicLoop();
+//    });
+    
+    return 0;
+}
+
 int Application::Run(){
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
@@ -75,7 +117,7 @@ int Application::Run(){
         /* Poll for and process events */
         glfwPollEvents();
     }
-    
+
     return 0;
 }
 
